@@ -1,0 +1,15 @@
+<div class="aplicacion">
+  <!-- Barra superior con contador reactivo -->
+  <app-navbar (alternarCarrito)="alternarCarrito()"></app-navbar>
+
+  <!-- Contenido con catálogo de productos -->
+  <main class="contenido-principal">
+    <app-product-list></app-product-list>
+  </main>
+
+  <!-- Panel lateral del carrito de compras -->
+  <app-cart-drawer
+    [visible]="carritoVisible"
+    (cerrar)="cerrarCarrito()"
+  ></app-cart-drawer>
+</div>

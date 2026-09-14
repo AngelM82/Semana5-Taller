@@ -1,0 +1,66 @@
+<!-- Fondo oscuro para cerrar al hacer clic afuera -->
+<div class="fondo-modal" *ngIf="visible" (click)="onCerrar()"></div>
+
+<!-- Panel del Carrito -->
+<div class="panel-carrito" *ngIf="visible">
+  <div class="cabecera-carrito">
+    <h3>Mi Carrito de Compras ({{ (cantidadTotal$ | async) || 0 }} productos)</h3>
+    <button type="button" class="boton-cerrar" (click)="onCerrar()">✕</button>
+  </div>
+
+  <div class="cuerpo-carrito" *ngIf="carrito$ | async as items">
+    <!-- Estado vacío -->
+    <div class="carrito-vacio" *ngIf="items.length === 0">
+      <p>Tu carrito actualmente está vacío.</p>
+      <button type="button" class="boton-secundario" (click)="onCerrar()">Ver Productos</button>
+    </div>
+
+    <!-- Lista de productos -->
+    <div class="lista-items" *ngIf="items.length > 0">
+      <div class="fila-item" *ngFor="let item of items">
+        <img [src]="item.producto.imagen" [alt]="item.producto.nombre" class="miniatura-item" />
+
+        <div class="info-item">
+          <h4>{{ item.producto.nombre }}</h4>
+          <span class="precio-unitario">Precio: {{ item.producto.precio | moneda }}</span>
+
+          <div class="controles-fila">
+            <div class="botones-cantidad">
+              <button type="button" (click)="decrementar(item.producto.id)">−</button>
+              <span class="cantidad-item">{{ item.cantidad }}</span>
+              <button type="button" (click)="incrementar(item.producto.id)">+</button>
+            </div>
+
+            <!-- Subtotal calculado con SubtotalPipe -->
+            <div class="subtotal-item">
+              <span>Subtotal: </span>
+              <strong>{{ item | subtotal | moneda }}</strong>
+            </div>
+
+            <button type="button" class="boton-eliminar" (click)="eliminar(item.producto.id)" title="Eliminar producto">
+              Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pie del carrito con Total general -->
+    <div class="pie-carrito" *ngIf="items.length > 0">
+      <!-- Total calculado con TotalCarritoPipe -->
+      <div class="total-caja">
+        <span>Total General:</span>
+        <strong class="total-monto">{{ items | totalCarrito | moneda }}</strong>
+      </div>
+
+      <div class="botones-pie">
+        <button type="button" class="boton-vaciar" (click)="vaciar()">
+          Vaciar Carrito
+        </button>
+        <button type="button" class="boton-comprar" (click)="finalizarCompra()">
+          Finalizar Compra
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+.seccion-catalogo {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.encabezado-catalogo {
+  margin-bottom: 20px;
+}
+
+.encabezado-catalogo h2 {
+  font-size: 1.5rem;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.encabezado-catalogo p {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.cuadricula-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}

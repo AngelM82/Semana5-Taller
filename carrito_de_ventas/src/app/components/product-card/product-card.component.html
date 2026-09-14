@@ -1,0 +1,37 @@
+<div class="tarjeta-producto">
+  <img [src]="producto.imagen" [alt]="producto.nombre" class="imagen-producto" />
+
+  <div class="contenido-tarjeta">
+    <span class="categoria-etiqueta">{{ producto.categoria }}</span>
+    <h3 class="nombre-producto">{{ producto.nombre }}</h3>
+    <p class="descripcion-producto">{{ producto.descripcion }}</p>
+
+    <div class="precios-caja">
+      <div class="precio-unitario">
+        <span>Precio: </span>
+        <strong>{{ producto.precio | moneda }}</strong>
+      </div>
+
+      <!-- Cálculo con SubtotalPipe si la cantidad es mayor a 1 -->
+      <div *ngIf="cantidad > 1" class="subtotal-previo">
+        <span>Subtotal ({{ cantidad }} unidades): </span>
+        <strong class="texto-azul">{{ (producto.precio | subtotal:cantidad) | moneda }}</strong>
+      </div>
+
+      <small class="stock-texto">Stock disponible: {{ producto.stock }} unidades</small>
+    </div>
+
+    <!-- Controles de cantidad y botón -->
+    <div class="acciones-tarjeta">
+      <div class="control-cantidad">
+        <button type="button" (click)="decrementar()" [disabled]="cantidad <= 1">−</button>
+        <span class="numero-cantidad">{{ cantidad }}</span>
+        <button type="button" (click)="incrementar()" [disabled]="cantidad >= producto.stock">+</button>
+      </div>
+
+      <button type="button" class="boton-agregar" (click)="agregar()" [disabled]="producto.stock === 0">
+        Agregar al Carrito
+      </button>
+    </div>
+  </div>
+</div>

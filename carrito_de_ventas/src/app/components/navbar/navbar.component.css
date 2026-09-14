@@ -1,0 +1,54 @@
+.barra-navegacion {
+  background-color: #2563eb;
+  color: #ffffff;
+  padding: 12px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.contenedor-navegacion {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.subtitulo {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.boton-carrito {
+  background-color: #ffffff;
+  color: #2563eb;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.boton-carrito:hover {
+  background-color: #f1f5f9;
+}
+
+.contador-badge {
+  background-color: #ef4444;
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}

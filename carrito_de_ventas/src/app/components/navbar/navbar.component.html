@@ -1,0 +1,13 @@
+<header class="barra-navegacion">
+  <div class="contenedor-navegacion">
+    <div class="logo">
+      <h2>🛒 Mi Tienda Online</h2>
+      <span class="subtitulo">Carrito con Observables y Pipes en Angular</span>
+    </div>
+
+    <button class="boton-carrito" (click)="onAlternar()" type="button">
+      <span>Ver Carrito</span>
+      <span class="contador-badge">{{ (cantidadTotal$ | async) || 0 }}</span>
+    </button>
+  </div>
+</header>

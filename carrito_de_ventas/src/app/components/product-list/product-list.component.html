@@ -1,0 +1,13 @@
+<section class="seccion-catalogo">
+  <div class="encabezado-catalogo">
+    <h2>Catálogo de Productos Disponibles</h2>
+    <p>Selecciona los productos y la cantidad que deseas agregar a tu carrito de compras.</p>
+  </div>
+
+  <div class="cuadricula-productos">
+    <app-product-card
+      *ngFor="let prod of productos"
+      [producto]="prod"
+    ></app-product-card>
+  </div>
+</section>
